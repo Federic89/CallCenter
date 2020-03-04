@@ -1,0 +1,127 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="Alascom S.r.l." />
+
+	<title>cc-test-v1</title>
+
+   <!-- Imports Open CTI JavaScript library. Point to a valid Salesforce domain.
+-->
+   <script src="https://italgas--devpi.lightning.force.com/support/api/47.0/lightning/opencti_min.js"></script>
+   <script type="text/javascript">
+      // Callback of API method: setSoftphonePanelHeight
+      var setSoftphonePanelHeightCallback = function(response) {
+            console.log('PuntoC');
+            // Returns true if setSoftphonePanelHeight method is executed successfully, false otherwise
+            if (response.result) {
+               console.log('setSoftphonePanelHeight is successfully executed.', response.returnValue);
+               alert('setSoftphonePanelHeight is successfully executed.');
+            } 
+            else {
+               console.error('setSoftphonePanelHeight failed.', response.errors);
+               alert('setSoftphonePanelHeight failed.');
+            }
+      };
+      // Invokes API method: setSoftphonePanelHeight
+      function setSoftphonePanelHeight() {
+         console.log('PuntoA');
+         sforce.opencti.setSoftphonePanelHeight({
+            heightPX: 500,
+            callback: setSoftphonePanelHeightCallback
+         });
+         console.log('PuntoB');
+      }
+      // Callback of API method: setSoftphonePanelWidth
+      var setSoftphonePanelWidthCallback = function(response) {
+            // Returns true if setSoftphonePanelWidth method is executed successfully, false otherwise
+            if (response.result) {
+               console.log('setSoftphonePanelWidth is successfully executed.', response.returnValue);
+               alert('setSoftphonePanelWidth is successfully executed.');
+            } 
+            else {
+               console.error('setSoftphonePanelWidth failed.', response.errors);
+               alert('setSoftphonePanelWidth failed.');
+            }
+      };
+      // Invokes API method: setSoftphonePanelWidth
+      function setSoftphonePanelWidth() {
+         sforce.opencti.setSoftphonePanelWidth({
+            widthPX: 500,
+            callback: setSoftphonePanelHeightCallback
+         });
+      }
+      // Callback of API method: setSoftphoneItemIcon
+      var setSoftphoneItemIconCallback = function(response) {
+            // Returns true if setSoftphoneItemIcon method is executed successfully, false otherwise
+            if (response.result) {
+               console.log('setSoftphoneItemIcon is successfully executed.', response.returnValue);
+               alert('setSoftphoneItemIcon is successfully executed.');
+            } 
+            else {
+               console.error('setSoftphoneItemIcon failed.', response.errors);
+               alert('setSoftphoneItemIcon failed.');
+            }
+      };
+      // Invokes API method: setSoftphoneItemIcon
+      function setSoftphoneItemIcon() {
+         sforce.opencti.setSoftphoneItemIcon({
+            key: 'call',
+            callback: setSoftphoneItemIconCallback
+         });
+      }
+      // Callback of API method: setSoftphoneItemLabel
+      var setSoftphoneItemLabelCallback = function(response) {
+            // Returns true if setSoftphoneItemLabel method is executed successfully, false otherwise
+            if (response.result) {
+               console.log('setSoftphoneItemLabel is successfully executed.', response.returnValue);
+               alert('setSoftphoneItemLabel is successfully executed.');
+            } 
+            else {
+               console.error('setSoftphoneItemLabel failed.', response.errors);
+               alert('setSoftphoneItemLabel failed.');
+            }
+      };
+      // Invokes API method: setSoftphoneItemLabel
+      function setSoftphoneItemLabel() {
+         sforce.opencti.setSoftphoneItemLabel({
+            Label: 'MySoftphone',
+            callback: setSoftphoneItemLabelCallback
+         });
+      }
+      //
+      var screenPopCallback = function(response) {
+            //
+            if (response.success) {
+                console.log('screenPop is successfully executed.', response.returnValue);
+                alert('screenPop is successfully executed.');
+            }
+            else { 
+                console.error('screenPop failed.', response.errors);
+                alert('screenPop failed.');
+            }
+      };
+      //
+      function screenPop() {
+        sforce.opencti.screenPop({
+            type: sforce.opencti.SCREENPOP_TYPE.OBJECTHOME,
+            params: {scope:'Account'}, 
+            callback: screenPopCallback 
+        });
+      }
+   </script>
+
+</head>
+
+<body>
+    
+    <button onclick="setSoftphonePanelHeight();">setSoftphonePanelHeight({heightPX:500})</button><br/>
+    <button onclick="setSoftphonePanelWidth();">setSoftphonePanelWidth({widthPX:500})</button><br/>
+    <button onclick="setSoftphoneItemIcon();">setSoftphoneItemIcon({key:'call'})</button><br/>
+    <button onclick="setSoftphoneItemLabel();">setSoftphoneItemLabel({label:'MySoftphone'})</button><br/>
+    <button onclick="screenPop();">screenPop({type: sforce.opencti.SCREENPOP_TYPE.OBJECTHOME, params: {scope:'Account'}})</button>
+    
+</body>
+
+</html>
